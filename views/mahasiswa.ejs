@@ -1,0 +1,39 @@
+<%- include('partials/open', { judul: 'Data Mahasiswa', subjudul: 'Daftar mahasiswa aktif per program studi' }) %>
+<div class="widget">
+  <div class="widget-head">Filter</div>
+  <div class="widget-body">
+    <form method="get" action="/mahasiswa" class="form-inline">
+      <input type="text" name="q" class="form-control" placeholder="Cari nama" value="<%= q %>">
+      <select name="prodi" class="form-control">
+        <option value="">Semua Prodi</option>
+        <option value="Informatika"<%= prodi === 'Informatika' ? ' selected' : '' %>>Informatika</option>
+        <option value="Sistem Informasi"<%= prodi === 'Sistem Informasi' ? ' selected' : '' %>>Sistem Informasi</option>
+      </select>
+      <button type="submit" class="btn btn-primary">Tampilkan</button>
+    </form>
+  </div>
+</div>
+<div class="widget">
+  <div class="widget-head">Hasil (<%= rows.length %> data)</div>
+  <div class="widget-body">
+    <table class="table table-striped table-bordered">
+      <thead><tr><th>NIM</th><th>Nama</th><th>Prodi</th><th>Angkatan</th><th>IPK</th><th>Aksi</th></tr></thead>
+      <tbody>
+      <% rows.forEach(function(m){ %>
+        <tr>
+          <td><%= m.nim %></td>
+          <td><%= m.nama %></td>
+          <td><%= m.prodi %></td>
+          <td><%= m.angkatan %></td>
+          <td><%= m.ipk %></td>
+          <td>
+            <a href="/mahasiswa/detail?nim=<%= m.nim %>" class="btn btn-xs btn-default">Detail</a>
+            <a href="/transkrip?nim=<%= m.nim %>" class="btn btn-xs btn-default">Transkrip</a>
+          </td>
+        </tr>
+      <% }) %>
+      </tbody>
+    </table>
+  </div>
+</div>
+<%- include('partials/close') %>

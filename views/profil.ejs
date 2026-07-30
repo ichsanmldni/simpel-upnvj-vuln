@@ -1,0 +1,14 @@
+<%- include('partials/open', { judul: 'Profil Saya', subjudul: 'Data akun pengguna' }) %>
+<div class="widget">
+  <div class="widget-head">Ubah Data</div>
+  <div class="widget-body">
+    <form method="post" action="/profil">
+      <div class="form-group"><label>Nama</label><input type="text" name="nama" class="form-control" value="<%= profil.nama %>"></div>
+      <div class="form-group"><label>Email</label><input type="text" name="email" class="form-control" value="<%= profil.email %>"></div>
+      <div class="form-group"><label>Username</label><input type="text" class="form-control" value="<%= profil.username %>" disabled></div>
+      <div class="form-group"><label>Peran</label><input type="text" class="form-control" value="<%= profil.role %>" disabled></div>
+      <button class="btn btn-primary">Simpan</button>
+    </form>
+  </div>
+</div>
+<%- include('partials/close') %>

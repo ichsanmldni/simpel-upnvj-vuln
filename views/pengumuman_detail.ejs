@@ -1,0 +1,10 @@
+<%- include('partials/open', { judul: 'Detail Pengumuman', subjudul: p.judul }) %>
+<div class="widget">
+  <div class="widget-head"><%- p.judul %></div>
+  <div class="widget-body">
+    <div style="color:#888;font-size:12px;margin-bottom:10px"><%= p.penulis %> &middot; <%= p.tanggal ? new Date(p.tanggal).toLocaleDateString('id-ID') : '' %></div>
+    <div><%- p.isi %></div>
+  </div>
+</div>
+<a href="/pengumuman" class="btn btn-default">Kembali</a>
+<%- include('partials/close') %>

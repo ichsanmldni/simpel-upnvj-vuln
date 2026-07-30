@@ -1,0 +1,17 @@
+<%- include('partials/open', { judul: 'Manajemen Pengguna', subjudul: 'Daftar akun pengguna SIMPEL' }) %>
+<div style="margin-bottom:12px"><a href="/admin/users/tambah" class="btn btn-primary">Tambah Pengguna</a></div>
+<div class="widget">
+  <div class="widget-head">Daftar Pengguna (<%= rows.length %>)</div>
+  <div class="widget-body">
+    <table class="table table-striped table-bordered">
+      <thead><tr><th>ID</th><th>Username</th><th>Nama</th><th>Peran</th><th>Email</th><th>Aksi</th></tr></thead>
+      <tbody>
+      <% rows.forEach(function(u){ %>
+        <tr><td><%= u.id %></td><td><%= u.username %></td><td><%= u.nama %></td><td><%= u.role %></td><td><%= u.email %></td>
+        <td><a href="/admin/users/hapus?id=<%= u.id %>" class="btn btn-xs btn-danger">Hapus</a></td></tr>
+      <% }) %>
+      </tbody>
+    </table>
+  </div>
+</div>
+<%- include('partials/close') %>

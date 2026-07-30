@@ -1,0 +1,32 @@
+<%- include('partials/open', { judul: 'Transkrip Nilai', subjudul: 'Rekap nilai dan capaian pembelajaran' }) %>
+<div class="widget">
+  <div class="widget-head">Pilih Mahasiswa</div>
+  <div class="widget-body">
+    <form method="get" action="/transkrip" class="form-inline">
+      <input type="text" name="nim" class="form-control" placeholder="NIM" value="<%= nim %>">
+      <button type="submit" class="btn btn-primary">Tampilkan</button>
+    </form>
+  </div>
+</div>
+<% if (mhs) { %>
+<div class="widget">
+  <div class="widget-head"><%= mhs.nama %> (<%= mhs.nim %>) - <%= mhs.prodi %></div>
+  <div class="widget-body">
+    <table class="table table-striped table-bordered">
+      <thead><tr><th>Kode</th><th>Mata Kuliah</th><th>SKS</th><th>Nilai</th><th>Huruf</th><th>Semester</th><th>Status UKT</th></tr></thead>
+      <tbody>
+      <% nilai.forEach(function(n){ %>
+        <tr>
+          <td><%= n.kode_mk %></td><td><%= n.nama_mk %></td><td><%= n.sks %></td>
+          <td><%= n.nilai_angka %></td><td><%= n.nilai_huruf %></td><td><%= n.semester %></td><td><%= n.status_ukt %></td>
+        </tr>
+      <% }) %>
+      </tbody>
+    </table>
+    <p><b>IPK:</b> <%= mhs.ipk %></p>
+  </div>
+</div>
+<% } else { %>
+<div class="alert alert-warning">Data mahasiswa tidak ditemukan.</div>
+<% } %>
+<%- include('partials/close') %>

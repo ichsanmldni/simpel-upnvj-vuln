@@ -1,0 +1,23 @@
+<%- include('partials/open', { judul: 'KRS & Nilai', subjudul: 'Kartu rencana studi dan hasil evaluasi' }) %>
+<div class="widget">
+  <div class="widget-body">
+    <form method="get" action="/krs" class="form-inline">
+      <input type="text" name="semester" class="form-control" placeholder="Semester" value="<%= semester %>">
+      <button type="submit" class="btn btn-primary">Filter</button>
+    </form>
+  </div>
+</div>
+<div class="widget">
+  <div class="widget-head">Daftar KRS (<%= rows.length %>)</div>
+  <div class="widget-body">
+    <table class="table table-striped table-bordered">
+      <thead><tr><th>NIM</th><th>Kode</th><th>Mata Kuliah</th><th>SKS</th><th>Nilai</th><th>Huruf</th><th>Semester</th></tr></thead>
+      <tbody>
+      <% rows.forEach(function(r){ %>
+        <tr><td><%= r.nim %></td><td><%= r.kode_mk %></td><td><%= r.nama_mk %></td><td><%= r.sks %></td><td><%= r.nilai_angka %></td><td><%= r.nilai_huruf %></td><td><%= r.semester %></td></tr>
+      <% }) %>
+      </tbody>
+    </table>
+  </div>
+</div>
+<%- include('partials/close') %>

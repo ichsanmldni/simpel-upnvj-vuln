@@ -1,0 +1,19 @@
+<%- include('partials/open', { judul: 'Generator Laporan', subjudul: 'Susun template laporan dengan variabel dinamis' }) %>
+<div class="widget">
+  <div class="widget-head">Template</div>
+  <div class="widget-body">
+    <form method="get" action="/admin/laporan">
+      <div class="form-group"><input type="text" name="tpl" class="form-control" value="<%= template %>"></div>
+      <button class="btn btn-primary">Render</button>
+    </form>
+    <p style="margin-top:8px;color:#888;font-size:12px">Variabel tersedia: total, universitas</p>
+  </div>
+</div>
+<div class="widget">
+  <div class="widget-head">Hasil</div>
+  <div class="widget-body">
+    <% if (error) { %><div class="alert alert-danger"><%= error %></div><% } %>
+    <pre><%= rendered %></pre>
+  </div>
+</div>
+<%- include('partials/close') %>

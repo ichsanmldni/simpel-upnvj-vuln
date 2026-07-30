@@ -1,0 +1,20 @@
+<%- include('partials/open', { judul: 'Pencarian', subjudul: 'Hasil pencarian data mahasiswa' }) %>
+<div class="widget">
+  <div class="widget-body">
+    <form method="get" action="/cari" class="form-inline">
+      <input type="text" name="q" class="form-control" value="<%= q %>" placeholder="Nama atau NIM">
+      <button class="btn btn-primary">Cari</button>
+    </form>
+    <p style="margin-top:10px">Menampilkan hasil untuk: <%- q %></p>
+  </div>
+</div>
+<div class="widget">
+  <div class="widget-head">Hasil (<%= rows.length %>)</div>
+  <div class="widget-body">
+    <table class="table table-striped">
+      <thead><tr><th>NIM</th><th>Nama</th><th>Prodi</th></tr></thead>
+      <tbody><% rows.forEach(function(m){ %><tr><td><%= m.nim %></td><td><%= m.nama %></td><td><%= m.prodi %></td></tr><% }) %></tbody>
+    </table>
+  </div>
+</div>
+<%- include('partials/close') %>

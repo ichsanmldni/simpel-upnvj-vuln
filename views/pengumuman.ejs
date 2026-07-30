@@ -1,0 +1,12 @@
+<%- include('partials/open', { judul: 'Pengumuman', subjudul: 'Informasi akademik terkini' }) %>
+<div style="margin-bottom:12px"><a href="/admin/pengumuman/tambah" class="btn btn-primary">Tambah Pengumuman</a></div>
+<% rows.forEach(function(p){ %>
+  <div class="widget">
+    <div class="widget-head"><a href="/pengumuman/detail?id=<%= p.id %>"><%= p.judul %></a></div>
+    <div class="widget-body">
+      <div style="color:#888;font-size:12px;margin-bottom:6px"><%= p.penulis %> &middot; <%= p.tanggal ? new Date(p.tanggal).toLocaleDateString('id-ID') : '' %></div>
+      <div><%- p.isi %></div>
+    </div>
+  </div>
+<% }) %>
+<%- include('partials/close') %>

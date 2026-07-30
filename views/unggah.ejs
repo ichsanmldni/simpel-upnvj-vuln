@@ -1,0 +1,12 @@
+<%- include('partials/open', { judul: 'Unggah Berkas', subjudul: 'Unggah dokumen pendukung akademik' }) %>
+<% if (pesan) { %><div class="alert alert-info"><%- pesan %></div><% } %>
+<div class="widget">
+  <div class="widget-head">Formulir Unggah</div>
+  <div class="widget-body">
+    <form method="post" action="/unggah" enctype="multipart/form-data">
+      <div class="form-group"><label>Pilih berkas</label><input type="file" name="berkas"></div>
+      <button class="btn btn-primary">Unggah</button>
+    </form>
+  </div>
+</div>
+<%- include('partials/close') %>

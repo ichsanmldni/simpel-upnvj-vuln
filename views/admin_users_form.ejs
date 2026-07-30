@@ -1,0 +1,12 @@
+<%- include('partials/open', { judul: 'Tambah Pengguna', subjudul: 'Buat akun baru' }) %>
+<div class="widget"><div class="widget-body">
+  <form method="post" action="/admin/users/tambah">
+    <div class="form-group"><label>Username</label><input name="username" class="form-control"></div>
+    <div class="form-group"><label>Password</label><input name="password" type="password" class="form-control"></div>
+    <div class="form-group"><label>Nama</label><input name="nama" class="form-control"></div>
+    <div class="form-group"><label>Peran</label><select name="role" class="form-control"><option>mahasiswa</option><option>dosen</option><option>admin</option></select></div>
+    <div class="form-group"><label>Email</label><input name="email" class="form-control"></div>
+    <button class="btn btn-primary">Simpan</button>
+  </form>
+</div></div>
+<%- include('partials/close') %>

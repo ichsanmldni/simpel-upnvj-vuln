@@ -1,0 +1,14 @@
+<%- include('partials/open', { judul: 'Backup Data', subjudul: 'Cadangkan tabel basis data' }) %>
+<div class="widget">
+  <div class="widget-body">
+    <form method="get" action="/admin/backup" class="form-inline">
+      <input type="text" name="tabel" class="form-control" value="<%= tabel %>">
+      <button class="btn btn-primary">Jalankan Backup</button>
+    </form>
+  </div>
+</div>
+<div class="widget">
+  <div class="widget-head">Keluaran Proses</div>
+  <div class="widget-body"><pre><%= hasil %><%= gagal %></pre></div>
+</div>
+<%- include('partials/close') %>

@@ -1,0 +1,39 @@
+<%- include('partials/open', { judul: 'Dashboard', subjudul: 'Ringkasan capaian pembelajaran dan aktivitas terkini' }) %>
+<div class="row">
+  <div class="col-sm-4"><div class="stat-box"><div class="num"><%= totalMahasiswa %></div><div class="lbl">Mahasiswa Aktif</div></div></div>
+  <div class="col-sm-4"><div class="stat-box"><div class="num"><%= totalMatakuliah %></div><div class="lbl">Mata Kuliah</div></div></div>
+  <div class="col-sm-4"><div class="stat-box"><div class="num"><%= totalKrs %></div><div class="lbl">Entri KRS</div></div></div>
+</div>
+<div class="row">
+  <div class="col-sm-8">
+    <div class="widget">
+      <div class="widget-head">Pengumuman Terbaru</div>
+      <div class="widget-body">
+        <table class="table table-striped">
+          <thead><tr><th>Tanggal</th><th>Judul</th><th>Penulis</th></tr></thead>
+          <tbody>
+          <% pengumuman.forEach(function(p){ %>
+            <tr>
+              <td><%= p.tanggal ? new Date(p.tanggal).toLocaleDateString('id-ID') : '-' %></td>
+              <td><a href="/pengumuman/detail?id=<%= p.id %>"><%= p.judul %></a></td>
+              <td><%= p.penulis %></td>
+            </tr>
+          <% }) %>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-4">
+    <div class="widget">
+      <div class="widget-head">Pintasan</div>
+      <div class="widget-body">
+        <p><a href="/mahasiswa" class="btn btn-default btn-block">Data Mahasiswa</a></p>
+        <p><a href="/krs" class="btn btn-default btn-block">KRS &amp; Nilai</a></p>
+        <p><a href="/transkrip" class="btn btn-default btn-block">Transkrip Saya</a></p>
+        <p><a href="/berkas" class="btn btn-default btn-block">Unduh Berkas</a></p>
+      </div>
+    </div>
+  </div>
+</div>
+<%- include('partials/close') %>

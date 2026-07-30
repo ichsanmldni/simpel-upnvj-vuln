@@ -1,0 +1,20 @@
+<%- include('partials/open', { judul: 'Berkas', subjudul: 'Unduh dokumen dan panduan akademik' }) %>
+<div style="margin-bottom:12px"><a href="/unggah" class="btn btn-primary">Unggah Berkas</a></div>
+<div class="widget">
+  <div class="widget-head">Daftar Dokumen</div>
+  <div class="widget-body">
+    <table class="table table-striped table-bordered">
+      <thead><tr><th>Nama Berkas</th><th>Pemilik</th><th>Tanggal</th><th>Aksi</th></tr></thead>
+      <tbody>
+      <% rows.forEach(function(d){ %>
+        <tr>
+          <td><%= d.nama_file %></td><td><%= d.pemilik %></td>
+          <td><%= d.tanggal ? new Date(d.tanggal).toLocaleDateString('id-ID') : '' %></td>
+          <td><a class="btn btn-xs btn-default" href="/berkas?file=<%= d.path_file %>">Unduh</a></td>
+        </tr>
+      <% }) %>
+      </tbody>
+    </table>
+  </div>
+</div>
+<%- include('partials/close') %>

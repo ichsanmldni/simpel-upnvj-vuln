@@ -1,0 +1,863 @@
+body {
+  font-family: "Times New Roman", Times;
+  margin: 0 auto;
+}
+body,
+td,
+th {
+  font-size: 14px;
+}
+td,
+th {
+  vertical-align: top;
+}
+th {
+  text-align: center;
+}
+.font-normal th {
+  font-weight: normal;
+  vertical-align: middle;
+}
+.kop {
+  border-spacing: 0;
+  border-collapse: collapse;
+}
+.kop td {
+  padding: 0;
+  text-align: center;
+}
+.kop-univ td {
+  font-size: 16px;
+  line-height: 1.1;
+}
+.kop-fak td {
+  font-size: 24px;
+  font-weight: bold;
+  line-height: 1.1;
+}
+.kop-prodi td {
+  font-size: 18px;
+  font-weight: bold;
+  line-height: 1.1;
+  padding-bottom: 5px;
+}
+.header td,
+.header th {
+  font-size: 13px;
+}
+.mid td,
+.mid th {
+  font-size: 14px;
+}
+.center td,
+.center th {
+  text-align: center;
+  vertical-align: middle;
+}
+
+.report-title {
+  font-size: 15px;
+  line-height: 19px;
+  font-weight: bold;
+  margin-top: 20px;
+  margin-bottom: 0px;
+}
+table {
+  border-collapse: collapse;
+}
+
+/* .nested-table {
+  /* page-break-inside: avoid; */
+/* page-break-before: always; */
+/* page-break-inside: initial; */
+/* }  */
+table.fixed {
+  table-layout: fixed;
+  width: 100%;
+}
+table.header td {
+  padding-right: 10px;
+}
+table.border {
+  border-collapse: collapse;
+}
+table.border tr th {
+  vertical-align: middle;
+  padding: 4px;
+  text-align: center;
+  background-color: #ddd;
+}
+tr.bg-color td,
+td.bg-color {
+  background-color: #eee;
+}
+table.border td,
+table.border th {
+  border: 1px solid #000;
+}
+table.border td.noborder-tp,
+table.border th.noborder-tp {
+  border-top: none !important;
+  border-bottom: none !important;
+}
+table.border td {
+  padding: 4px;
+}
+
+table.border-lr td,
+table.border-lr th {
+  border-top: none;
+  border-bottom: none;
+  border-left: 1px solid #000;
+  border-right: 1px solid #000;
+}
+
+.break-word {
+  word-wrap: break-word;
+  white-space: normal;
+}
+
+tr.noborder td,
+tr.noborder th {
+  border: none !important;
+}
+
+tr td.noborder,
+tr th.noborder {
+  border: none;
+}
+
+table.no-border td,
+table.no-border th,
+table.nb td,
+table.nb th {
+  border: none !important;
+}
+.image-center {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.bold {
+  font-weight: bold;
+}
+.fs-30,
+table.fs-30 tr th,
+table.fs-30 tr td {
+  font-size: 30px;
+}
+.fs-28,
+table.fs-28 tr th,
+table.fs-28 tr td {
+  font-size: 28px;
+}
+.fs-26,
+table.fs-26 tr th,
+table.fs-26 tr td {
+  font-size: 26px;
+}
+.fs-24,
+table.fs-24 tr th,
+table.fs-24 tr td {
+  font-size: 24px;
+}
+.fs-22,
+table.fs-22 tr th,
+table.fs-22 tr td {
+  font-size: 22px;
+}
+.fs-20,
+table.fs-20 tr th,
+table.fs-20 tr td {
+  font-size: 20px;
+}
+.fs-18,
+table.fs-18 tr th,
+table.fs-18 tr td {
+  font-size: 18px;
+}
+.fs-16,
+table.fs-16 tr th,
+table.fs-16 tr td {
+  font-size: 16px;
+}
+
+.fs-15,
+table.fs-15 tr th,
+table.fs-15 tr td {
+  font-size: 15px;
+}
+.fs-14,
+table.fs-14 tr th,
+table.fs-14 tr td {
+  font-size: 14px;
+}
+.fs-12,
+table.fs-12 tr th,
+table.fs-12 tr td {
+  font-size: 12px;
+}
+.fs-13,
+table.fs-13 tr th,
+table.fs-13 tr td {
+  font-size: 13px;
+}
+.fs-11,
+table.fs-11 tr th,
+table.fs-11 tr td {
+  font-size: 11px;
+}
+.fs-10,
+table.fs-10 tr th,
+table.fs-10 tr td {
+  font-size: 10px;
+}
+
+table.p-1 tr td,
+table.p-1 tr th,
+tr.p-1 td,
+tr.p-1 th {
+  padding: 1px !important;
+}
+
+table.p-0 tr td,
+table.p-0 tr th,
+tr.p-0 td,
+tr.p-0 th {
+  padding: 0px !important;
+}
+
+table.p-2 tr td,
+table.p-2 tr th,
+tr.p-2 td,
+tr.p-2 th {
+  padding: 2px !important;
+}
+table.p-4 tr td,
+table.p-4 tr th,
+tr.p-4 td,
+tr.p-4 th {
+  padding: 4px !important;
+}
+table.p-6 tr td,
+table.p-6 tr th,
+tr.p-6 td,
+tr.p-6 th {
+  padding: 6px !important;
+}
+
+table.p-8 tr td,
+table.p-8 tr th,
+tr.p-8 td,
+tr.p-8 th {
+  padding: 8px !important;
+}
+
+table.p-10 tr td,
+table.p-10 tr th,
+tr.p-10 td,
+tr.p-10 th {
+  padding: 10px !important;
+}
+
+table.p-12 tr td,
+table.p-12 tr th,
+tr.p-12 td,
+tr.p-12 th {
+  padding: 12px !important;
+}
+/* table {
+  page-break-inside: auto;
+} */
+
+table.table-padding-8 th,
+table.table-padding-8 td {
+  padding: 8px;
+}
+table.table-padding-6 th,
+table.table-padding-6 td {
+  padding: 6px;
+}
+.pos-top {
+  position: absolute;
+  top: 0;
+}
+.pos-bottom {
+  position: absolute;
+  bottom: 0;
+}
+.page-break {
+  page-break-before: always;
+}
+
+.avoid-break {
+  page-break-inside: avoid !important;
+}
+/* .auto-break{
+  page-break-after:auto;
+} */
+.page-break-after {
+  page-break-after: always;
+}
+.center {
+  text-align: center !important;
+}
+.justify {
+  text-align: justify !important;
+}
+.left {
+  text-align: left !important;
+}
+.right {
+  text-align: right !important;
+}
+.nopadding {
+  padding: 0px !important;
+}
+table tr.td-va-middle td {
+  vertical-align: middle;
+}
+table tr.td-va-top td {
+  vertical-align: top;
+}
+
+@media print {
+  .col-md-1,
+  .col-md-2,
+  .col-md-3,
+  .col-md-4,
+  .col-md-5,
+  .col-md-6,
+  .col-md-7,
+  .col-md-8,
+  .col-md-9,
+  .col-md-10,
+  .col-md-11,
+  .col-md-12 {
+    float: left;
+  }
+  .col-md-12 {
+    width: 100%;
+  }
+  .col-md-11 {
+    width: 91.66666666666666%;
+  }
+  .col-md-10 {
+    width: 83.33333333333334%;
+  }
+  .col-md-9 {
+    width: 75%;
+  }
+  .col-md-8 {
+    width: 66.66666666666666%;
+  }
+  .col-md-7 {
+    width: 58.333333333333336%;
+  }
+  .col-md-6 {
+    width: 50%;
+  }
+  .col-md-5 {
+    width: 41.66666666666667%;
+  }
+  .col-md-4 {
+    width: 33.33333333333333%;
+  }
+  .col-md-3 {
+    width: 25%;
+  }
+  .col-md-2 {
+    width: 16.666666666666664%;
+  }
+  .col-md-1 {
+    width: 8.333333333333332%;
+  }
+}
+img.logo-header {
+  width: 80px;
+  height: 79px;
+}
+img.qr {
+  width: 101px;
+  height: 100px;
+  text-align: right;
+}
+table.sign {
+  table-layout: fixed;
+  margin: 40px auto 0px;
+}
+table.sign .content, .content-sign {
+  border: 1px solid #0a4595;
+  border-radius: 5px;
+  padding: 5px 5px 0px;
+  color: #0a4595;
+}
+table.sign .content .content-qr {
+  float: left;
+  width: 30%;
+}
+table.sign .content .content-data {
+  float: left;
+  width: 70%;
+  padding: 10px;
+}
+
+.no-margin {
+  margin: 0px !important;
+}
+.p-4 {
+  padding: 4px !important;
+}
+.p-6 {
+  padding: 6px !important;
+}
+.p-8 {
+  padding: 8px !important;
+}
+.p-10 {
+  padding: 10px !important;
+}
+.pt-0 {
+  padding-top: 0px !important;
+}
+.pt-1 {
+  padding-top: 1px !important;
+}
+.pt-2 {
+  padding-top: 2px !important;
+}
+.pt-3 {
+  padding-top: 3px !important;
+}
+.pt-4 {
+  padding-top: 4px !important;
+}
+.pt-6 {
+  padding-top: 6px !important;
+}
+.pt-8 {
+  padding-top: 8px !important;
+}
+.pt-10 {
+  padding-top: 10px !important;
+}
+.pl-4 {
+  padding-left: 4px !important;
+}
+.pl-6 {
+  padding-left: 6px !important;
+}
+.pl-8 {
+  padding-left: 8px !important;
+}
+.pl-10 {
+  padding-left: 10px !important;
+}
+.pr-4,
+th.pr-4 {
+  padding-right: 4px !important;
+}
+.pr-6 {
+  padding-right: 6px !important;
+}
+.pr-8 {
+  padding-right: 8px !important;
+}
+.pr-10 {
+  padding-right: 10px !important;
+}
+.pb-0 {
+  padding-bottom: 0px !important;
+}
+.pb-4 {
+  padding-bottom: 4px !important;
+}
+.pb-6 {
+  padding-bottom: 6px !important;
+}
+.pb-8 {
+  padding-bottom: 8px !important;
+}
+.pb-10 {
+  padding-bottom: 10px !important;
+}
+
+.m-0 {
+  margin: 0px !important;
+}
+.m-2 {
+  margin: 2px !important;
+}
+.m-4 {
+  margin: 4px !important;
+}
+.m-6 {
+  margin: 6px !important;
+}
+.mb-2 {
+  margin-bottom: 2px !important;
+}
+.mb-4 {
+  margin-bottom: 4px !important;
+}
+.mb-6 {
+  margin-bottom: 6px !important;
+}
+.mb-8 {
+  margin-bottom: 8px !important;
+}
+
+.np {
+  padding: 0px !important;
+}
+.np-t {
+  padding-top: 0px !important;
+}
+.np-b {
+  padding-top: 0px !important;
+}
+.np-l {
+  padding-top: 0px !important;
+}
+.np-r {
+  padding-top: 0px !important;
+}
+
+.nb-t {
+  border-top: none !important;
+}
+.nb-b {
+  border-bottom: none !important;
+}
+.nb-l {
+  border-left: none !important;
+}
+.nb-r {
+  border-right: none !important;
+}
+.nb {
+  border-top: none !important;
+  border-bottom: none !important;
+  border-left: none !important;
+  border-right: none !important;
+}
+
+.clearfix:before,
+.clearfix:after {
+  display: table;
+  content: " ";
+}
+.clearfix:after {
+  clear: both;
+}
+
+.gl-label {
+  display: inline-block;
+  align-items: center; /* Hapus karena tidak didukung */
+  background-color: #ffffff; /* Ganti dengan warna default */
+  max-width: 100%;
+  box-shadow: none; /* Hapus box-shadow jika tidak berfungsi */
+}
+
+.gl-label-scoped {
+  box-shadow: 0 0 0 2px currentColor; /* Hapus inset */
+}
+
+.gl-label .gl-label-link {
+  display: block;
+  /* Ganti flex dengan block */
+  color: inherit;
+  max-width: 100%;
+}
+
+.gl-label .gl-label-text,
+.gl-label .gl-label-text-scoped {
+  padding: 0px 4px;
+  display: inline-block;
+  vertical-align: top;
+  white-space: wrap;
+  /* word-wrap: break-word;
+  white-space: normal; */
+  max-width: 100%;
+}
+
+.gl-label-text-dark {
+  color: #18171d;
+}
+
+.gl-label-scoped .gl-label-text-scoped {
+  color: #18171d;
+  padding-top: 0px;
+  padding-bottom: 0px;
+  padding-left: 4px;
+  padding-right: 8px;
+}
+
+.gl-label.gl-label-orange {
+  border: solid 2px #fcc37e; /* Ganti inset dengan solid */
+  box-shadow: 0 0 0 2px #fcc37e; /* Hapus inset */
+  color: #fcc37e;
+}
+
+.gl-label.gl-label-yellow {
+  border: solid 2px #eee600; /* Ganti inset dengan solid */
+  box-shadow: 0 0 0 2px #eee600; /* Hapus inset */
+  color: #eee600;
+}
+
+.gl-label.gl-label-blue {
+  border: solid 2px #a4ccf1; /* Ganti inset dengan solid */
+  box-shadow: 0 0 0 2px #a4ccf1; /* Hapus inset */
+  color: #a4ccf1;
+}
+
+.gl-label.gl-label-green {
+  border: solid 2px #a8d695; /* Ganti inset dengan solid */
+  box-shadow: 0 0 0 2px #a8d695; /* Hapus inset */
+  color: #a8d695;
+}
+
+.gl-label.gl-label-red {
+  border: solid 2px rgba(255, 0, 0, 0.43); /* #ff00006e */
+  box-shadow: 0 0 0 2px rgba(255, 0, 0, 0.43); /* #ff00006e */
+  color: rgba(255, 0, 0, 0.43); /* #ff00006e */
+}
+
+.gl-label.gl-label-grey {
+  border: solid 2px rgba(233, 232, 232, 0.92); /* #e9e8e8ea */
+  box-shadow: 0 0 0 2px rgba(233, 232, 232, 0.92); /* #e9e8e8ea */
+  color: rgba(233, 232, 232, 0.92); /* #e9e8e8ea */
+}
+
+.gl-label-text.gl-label-bg-orange {
+  background-color: #fcc37e;
+}
+
+.gl-label-text.gl-label-bg-yellow {
+  background-color: #eee600;
+}
+
+.gl-label-text.gl-label-bg-blue {
+  background-color: #a4ccf1;
+}
+
+.gl-label-text.gl-label-bg-green {
+  background-color: #a8d695;
+}
+
+.gl-label-text.gl-label-bg-red {
+  background-color: rgba(255, 0, 0, 0.43); /* #ff00006e */
+}
+
+.gl-label-text.gl-label-bg-grey {
+  background-color: rgba(233, 232, 232, 0.92); /* #e9e8e8ea */
+}
+.text-center {
+  text-align: center;
+}
+.bg-white {
+  background-color: white;
+}
+.text-success {
+  color: #a8d695;
+}
+.text-danger {
+  color: #ff00006e;
+}
+
+.box-statistik {
+  font-family: Arial, sans-serif;
+  font-size: 10pt;
+  width: 100%;
+}
+
+.box-statistik-title {
+  background-color: #eaf4fc;
+  padding: 5px 8px;
+  font-weight: bold;
+  color: #1b6aa5;
+  /* border: 0.5px solid #a4ccf1; 
+        border-bottom: none;
+        border-top-left-radius: 2px;
+        border-top-right-radius: 2px; */
+}
+
+.tbl-statistik {
+  width: 100%;
+  border-collapse: collapse; /* dompdf friendly */
+  font-size: 10pt;
+  border: 1px solid #a4ccf1;
+}
+
+.tbl-statistik td {
+  padding: 5px 8px;
+  border: 1px solid #a4ccf1 !important; /* semua border biru */
+}
+
+.tbl-statistik .cell-label {
+  background-color: #eaf4fc;
+  text-align: right;
+  color: #1b6aa5;
+  font-weight: bold;
+  width: 50%;
+}
+
+.tbl-statistik .cell-value {
+  width: 25%;
+  text-align: left;
+}
+
+/* Container umum */
+.chart-container {
+  width: 100%;
+  font-family: Arial, sans-serif;
+  font-size: 9pt;
+  margin-top: 10px;
+  text-align: center;
+}
+
+.chart-title {
+  font-weight: bold;
+  margin-bottom: 2px;
+}
+
+.chart-subtitle {
+  font-size: 8pt;
+  margin-bottom: 10px;
+}
+
+/* ========================= */
+/*    VERTICAL (BOTTOM-UP)   */
+/* ========================= */
+.chart-vertical .chart-area {
+  width: 100%;
+  height: 140px;
+  border-left: 1px solid #000;
+  border-bottom: 1px solid #000;
+  padding: 0 10px;
+}
+
+.chart-vertical .chart-bar {
+  display: inline-block;
+  width: 30px;
+  margin: 0 6px;
+  vertical-align: bottom;
+  text-align: center;
+}
+
+.chart-vertical .chart-bar-rect {
+  width: 100%;
+  background-color: #8ec3ff;
+}
+
+/* ========================= */
+/*  VERTICAL (TOP-DOWN)      */
+/* ========================= */
+.chart-vertical-topdown .chart-area {
+  width: 100%;
+  height: 140px;
+  border-left: 1px solid #000;
+  border-top: 1px solid #000;
+  padding: 0 10px;
+}
+
+.chart-vertical-topdown .chart-bar {
+  display: inline-block;
+  width: 30px;
+  margin: 0 6px;
+  vertical-align: top;
+  text-align: center;
+}
+
+.chart-vertical-topdown .chart-bar-rect {
+  width: 100%;
+  background-color: #8ec3ff;
+}
+
+/* ========================= */
+/*      HORIZONTAL           */
+/* ========================= */
+/* ====== HORIZONTAL BAR CHART UNTUK DOMPDF ====== */
+.chart-hc-wrapper {
+  width: 100%;
+  background-color: #eaf4fc; 
+  padding: 8px 10px;
+  font-family: Arial, sans-serif;
+  font-size: 9pt;
+  color: #1b6aa5;
+  box-sizing: border-box;
+  margin-top: 10px;
+}
+
+.chart-hc-title {
+  font-size: 10pt;
+  font-weight: bold;
+  margin-bottom: 4px;
+  text-align: center;
+}
+
+.chart-hc-subtitle {
+  font-size: 8pt;
+  margin-bottom: 8px;
+  color: #1b6aa5;
+  text-align: center;
+}
+
+/* ==== TABEL CHART (FULL GRID SAMA SEPERTI STATISTIK NILAI) ==== */
+.chart-hc-table {
+  width: 100%;
+  border-collapse: collapse;
+  background: #ffffff;
+  border-radius: 5px;
+}
+
+.chart-hc-table td {
+  border: none !important;
+  border-bottom: 1px solid #eaf4fc !important;
+  padding: 4px 6px;
+  vertical-align: middle;
+}
+
+.chart-hc-label {
+  width: 10%;
+  font-weight: bold;
+  color: #1b6aa5;
+}
+
+.chart-hc-barcell {
+  width: 60%;
+  background-color: #ffffff;
+}
+
+/* TRACK */
+.chart-hc-bar-track {
+  width: 100%;
+  height: 12px;
+  background-color: #ffffff;
+  border: 1px solid #a4ccf1;
+  border-radius: 2px;
+}
+
+/* BAR */
+.chart-hc-bar-fill {
+  height: 12px;
+  background-color: #48a9ff;
+  border-radius: 2px;
+}
+
+.chart-hc-value {
+  width: 30%;
+  white-space: nowrap;
+  text-align: left;
+  padding-left: 4px;
+  color: #1b6aa5;
+}
+
+.chart-hc-footer {
+  text-align: center;
+  font-size: 8pt;
+  border-top: 1px solid #a4ccf1;
+  padding-top: 4px;
+  color: #1b6aa5;
+}

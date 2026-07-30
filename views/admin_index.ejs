@@ -1,0 +1,30 @@
+<%- include('partials/open', { judul: 'Administrasi', subjudul: 'Pengelolaan pengguna, laporan, dan pemeliharaan sistem' }) %>
+<div class="row">
+  <div class="col-sm-3"><div class="stat-box"><div class="num"><%= totalUsers %></div><div class="lbl">Total Pengguna</div></div></div>
+</div>
+<div class="row">
+  <div class="col-sm-6">
+    <div class="widget">
+      <div class="widget-head">Menu Administrasi</div>
+      <div class="widget-body">
+        <p><a href="/admin/users" class="btn btn-default btn-block">Manajemen Pengguna</a></p>
+        <p><a href="/admin/pengumuman/tambah" class="btn btn-default btn-block">Tambah Pengumuman</a></p>
+        <p><a href="/admin/laporan" class="btn btn-default btn-block">Generator Laporan</a></p>
+        <p><a href="/admin/backup" class="btn btn-default btn-block">Backup Data</a></p>
+        <p><a href="/admin/log" class="btn btn-default btn-block">Log Aktivitas</a></p>
+      </div>
+    </div>
+  </div>
+  <div class="col-sm-6">
+    <div class="widget">
+      <div class="widget-head">Aktivitas Terakhir</div>
+      <div class="widget-body">
+        <table class="table table-striped">
+          <thead><tr><th>Pengguna</th><th>Aksi</th><th>IP</th></tr></thead>
+          <tbody><% log.forEach(function(l){ %><tr><td><%= l.username %></td><td><%= l.aksi %></td><td><%= l.ip %></td></tr><% }) %></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+<%- include('partials/close') %>
