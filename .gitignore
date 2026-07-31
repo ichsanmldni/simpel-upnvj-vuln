@@ -3,4 +3,3 @@ storage/upload/*
 !storage/upload/.gitkeep
 docker-compose.override.yml
 .env
-docker-compose.yml
