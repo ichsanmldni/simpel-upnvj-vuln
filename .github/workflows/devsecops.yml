@@ -1,0 +1,131 @@
+name: devsecops
+# =====================================================================
+#  Pipeline DevSecOps troya-next-vuln  —  MODE REPORT-ONLY
+#  Semua tool JALAN & meng-upload laporan, tapi pipeline TETAP HIJAU.
+#  (Lab ini sengaja penuh kerentanan; tujuannya LIHAT temuan tiap tool,
+#   bukan nge-block merge. Kalau mau jadi gate beneran: lihat komentar
+#   "report-only" di bawah dan ubah exit-code/fail_action.)
+#
+#  5 tool:  Semgrep (SAST) · Trivy (SCA) · OWASP Dependency-Check (SCA)
+#           · SonarCloud (SAST) · OWASP ZAP (DAST)
+#  4 tool jalan TANPA akun. Hanya SonarCloud yang butuh SONAR_TOKEN;
+#  kalau secret belum diisi, job Sonar otomatis di-skip -> pipeline hijau.
+# =====================================================================
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+
+permissions:
+  contents: read
+  security-events: write   # supaya SARIF muncul di tab Security (Code scanning)
+
+jobs:
+  # ================= SAST pola — Semgrep (tanpa akun) =================
+  semgrep:
+    name: SAST · Semgrep
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with: { python-version: '3.12' }
+      - run: pip install semgrep
+      - run: semgrep scan --config auto --sarif --output semgrep.sarif || true
+      - uses: github/codeql-action/upload-sarif@v3
+        if: always()
+        with:
+          sarif_file: semgrep.sarif
+          category: semgrep
+
+  # ============ SCA + secret + misconfig — Trivy (tanpa akun) ============
+  trivy:
+    name: SCA · Trivy
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: aquasecurity/trivy-action@v0.36.0
+        with:
+          scan-type: fs
+          scan-ref: .
+          scanners: vuln,secret,misconfig
+          severity: HIGH,CRITICAL
+          format: sarif
+          output: trivy.sarif
+          exit-code: '0'          # report-only. Ganti '1' kalau mau nge-block build.
+      - uses: github/codeql-action/upload-sarif@v3
+        if: always()
+        with:
+          sarif_file: trivy.sarif
+          category: trivy
+
+  # ============ SCA CVE/NVD — OWASP Dependency-Check (tanpa akun) ============
+  depcheck:
+    name: SCA · OWASP Dependency-Check
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with: { node-version: 20 }
+      - run: npm ci || npm install   # biar node_modules ADA -> analisis dependensi lebih lengkap
+      - uses: dependency-check/Dependency-Check_Action@main
+        continue-on-error: true    # NVD bisa lambat/limit tanpa API key
+        with:
+          project: troya-next
+          path: .
+          format: HTML
+          # args: --nvdApiKey ${{ secrets.NVD_API_KEY }}   # opsional -> jauh lebih cepat
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: depcheck-report
+          path: reports
+
+  # ========== SAST — SonarCloud (butuh SONAR_TOKEN; auto-skip kalau kosong) ==========
+  sonar:
+    name: SAST · SonarCloud
+    runs-on: ubuntu-latest
+    env:
+      SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0          # Sonar butuh histori penuh untuk analisis new-code
+      - name: SonarCloud Scan
+        if: ${{ env.SONAR_TOKEN != '' }}   # skip kalau secret belum diisi -> pipeline tetap hijau
+        continue-on-error: true            # non-blocking (lab sengaja rentan)
+        uses: SonarSource/sonarqube-scan-action@v8.2.0
+        # ^ otomatis baca sonar-project.properties (organization + projectKey).
+        #   SONAR_HOST_URL TIDAK perlu untuk SonarCloud.
+
+  # ================= DAST — OWASP ZAP (butuh app HIDUP) =================
+  dast:
+    name: DAST · OWASP ZAP
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Boot troya-next-vuln + MySQL (ephemeral di dalam runner)
+        run: |
+          docker compose up -d --build
+          echo "Menunggu app siap di :8985 ..."
+          for i in $(seq 1 60); do
+            curl -sf http://localhost:8985 >/dev/null && { echo "UP"; break; }
+            sleep 5
+          done
+      - name: OWASP ZAP baseline scan (docker langsung — hindari bug artifact di action)
+        run: |
+          mkdir -p zap-report && chmod 777 zap-report
+          docker run --rm --network host \
+            -v "$PWD/zap-report:/zap/wrk/:rw" \
+            ghcr.io/zaproxy/zaproxy:stable \
+            zap-baseline.py -t http://localhost:8985 \
+            -r zap-report.html -w zap-report.md -J zap-report.json \
+            || true    # report-only: exit-code WARN/FAIL dari ZAP jangan gagalin job
+      - name: Upload laporan ZAP
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: zap-report
+          path: zap-report/
+      - name: Teardown
+        if: always()
+        run: docker compose down -v
